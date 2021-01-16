@@ -1,0 +1,15 @@
+.Navigation {
+    min-height: 10vh;
+    background-color: blue;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+.Image {
+    width: 15%;
+}
+.Logo {
+    height: auto;
+    width: 100%;
+}
