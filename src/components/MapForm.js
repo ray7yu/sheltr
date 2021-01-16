@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import './MapForm.css';
-import {FormControl, Form, Button, Dropdown } from 'react-bootstrap';
+import GEO_CODE_KEY from '../config'
+import { FormControl, Form, Button, Dropdown } from 'react-bootstrap';
 
 
 const MapForm = () => {
@@ -25,7 +26,10 @@ const MapForm = () => {
         console.log(lat, long, option);
     }
     const convertZip = (zip) => {
-        //Convert zip to lat and long and set new values
+        fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + zip.toString() + "&key=AIzaSyC8slYDbiX6TXOjrAIaDAVIZR1fsbbhTGI")
+            .then(data=>{return data.json()})
+            .then((data) => console.log(data.results[0].geometry.bounds.northeast.lat));
+            
     }
     const [long, setLong] = useState("");
     const [lat, setLat] = useState("");
@@ -51,7 +55,7 @@ const MapForm = () => {
                             <Dropdown.Menu>
                                 <Dropdown.Item onClick={() => setOption("Shelter")}>Shelter</Dropdown.Item>
                                 <Dropdown.Item onClick={() => setOption("Food")}>Food</Dropdown.Item>
-                                <Dropdown.Item onClick={() => {}}>Something else</Dropdown.Item>
+                                <Dropdown.Item onClick={() => { }}>Something else</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
@@ -59,16 +63,16 @@ const MapForm = () => {
                 <Form.Group controlId="formBasicEmail" className="form-group1">
                     {/* <Form.Label>Use My Location</Form.Label> */}
                     <Button variant="info" type="submit" onClick={getLocation}>
-                    Use My Location
+                        Use My Location
                     </Button>
                     {/* <Form.Text id="text-result">
                     </Form.Text> */}
                     <Form.Text className="text-muted">
-                    Or
+                        Or
                     </Form.Text>
                     <div className="zipCode-group">
                         <Form.Label>Zip Code</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Zip Code" id="zipCode-text" onChange={(event) => convertZip(event.target.value)}/>
+                        <Form.Control type="text" placeholder="Enter Zip Code" id="zipCode-text" onChange={(event) => convertZip(event.target.value)} />
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
