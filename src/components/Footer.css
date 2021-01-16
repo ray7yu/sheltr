@@ -2,3 +2,20 @@
     height: auto;
     width: 100%;
 }
+.Github {
+    cursor: pointer;
+    font-size: 2em;
+    float: right;
+}
+.Social {
+    flex-grow: 2;
+}
+.Footer {
+    text-align: left;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    padding: 0 10px;
+    min-height: 10vh;
+    background-color: grey;
+}

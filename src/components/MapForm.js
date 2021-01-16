@@ -34,13 +34,13 @@ const MapForm = () => {
     const [long, setLong] = useState("");
     const [lat, setLat] = useState("");
     // const [zip, setZip] = useState("");
-    const [option, setOption] = useState("Choose Option");
+    const [option, setOption] = useState("Shelter");
     return (
         <div className="userInput">
             <Form onSubmit={submitForm}>
                 <Form.Group controlId="formBasicCheckbox">
                     <Form.Label className="text-checkbox">
-                        Select which items to display
+                        Select which item to display
                     </Form.Label>
                     <div className="checkbox-container">
                         {/* <Form.Check type="checkbox" className="form-checkbox" label="Homeless Shelters" />
