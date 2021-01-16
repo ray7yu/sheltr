@@ -1,5 +1,8 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Navigation from './components/Navigation';
+import Body from './components/Body';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -18,15 +21,9 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <div className="Navigation">
-        Navigation
-      </div>
-      <div className="Body">
-        Body
-      </div>
-      <div className="Footer">
-        Footer
-      </div>
+      <Navigation />
+      <Body />
+      <Footer />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,400&display=swap');
 .App {
   text-align: center;
   height: 100vh;
@@ -26,10 +27,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
 } */
-.Navigation {
-  min-height: 10vh;
-  background-color: blue;
-}
+
 .Body {
   background-color: red;
   flex-grow: 2;
