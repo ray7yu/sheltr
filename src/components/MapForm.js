@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import './MapForm.css';
-import GEO_CODE_KEY from '../config'
+import {GEO_CODE_KEY} from '../config'
 import { FormControl, Form, Button, Dropdown } from 'react-bootstrap';
 
 
@@ -26,7 +26,7 @@ const MapForm = () => {
         console.log(lat, long, option);
     }
     const convertZip = (zip) => {
-        fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + zip.toString() + "&key=AIzaSyC8slYDbiX6TXOjrAIaDAVIZR1fsbbhTGI")
+        fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + zip.toString() + "&key=" + GEO_CODE_KEY)
             .then(data=>{return data.json()})
             .then((data) => console.log(data.results[0].geometry.bounds.northeast.lat));
             
