@@ -12,6 +12,7 @@ const center = {
 
 function Body() {
   const [publicHousingDevelopments, setPublicHousingDevelopments] = useState([]);
+  const [publicHousingInfo, setPublicHousingInfo] = useState([]);
 
   const getPublicHousingDevelopments = (latmin, latmax, longmin, longmax) => (
     axios.get('https://services.arcgis.com/VTyQ9soqVukalItT/arcgis/rest/services/Public_Housing_Developments/FeatureServer/0/query?where=LAT%20%3E%3D%20'+ 
@@ -25,6 +26,24 @@ function Body() {
     '&outFields=STD_ADDR,STD_CITY,STD_ST,STD_ZIP5,OBJECTID&outSR=4326&f=json').then(res=>{
         console.log(res.data.features)
         setPublicHousingDevelopments(res.data.features)
+    })
+  )
+
+  //type = 'Authorities', 'Buildings', or 'Developments'
+  const getPublicHousingInfo = (type, latmin, latmax, longmin, longmax) => (
+    axios.get('https://services.arcgis.com/VTyQ9soqVukalItT/arcgis/rest/services/Public_Housing'+
+    type + 
+    '/FeatureServer/0/query?where=LAT%20%3E%3D%20'+ 
+    latmin.toString() + 
+    '%20AND%20LAT%20%3C%3D%20'+ 
+    latmax.toString() +
+    '%20AND%20LON%20%3E%3D%20'+
+    longmin.toString() +
+    '%20AND%20LON%20%3C%3D%20'+
+    longmax.toString() +
+    '&outFields=STD_ADDR,STD_CITY,STD_ST,STD_ZIP5,OBJECTID&outSR=4326&f=json').then(res=>{
+        console.log(res.data.features)
+        setPublicHousingInfo(res.data.features)
     })
   )
 

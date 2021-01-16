@@ -1,6 +1,6 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
-import API_KEY from '../../config'
+import {API_KEY} from '../../config'
 import LocationPin from './LocationPin'
 import './map.css'
 
