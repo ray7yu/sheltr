@@ -23,6 +23,7 @@ function App() {
       </header> */}
       <Navigation />
       <Body />
+    
       <Footer />
     </div>
   );
