@@ -6,7 +6,9 @@
     text-align: center;
     margin: auto;
     padding-bottom: 10px;
+    margin-bottom: 10px;
     background-color: red;
+    border-radius: 10px;
 }
 .Welcome {
     font-weight: 700;

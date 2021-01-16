@@ -5,7 +5,7 @@ import {FormControl, Form, Button } from 'react-bootstrap';
 function MapForm(){
     return (
         <div className="userInput">
-            <Form >
+            <Form>
                 <Form.Group controlId="formBasicEmail" className="form-group1">
                     {/* <Form.Label>Use My Location</Form.Label> */}
                     <Button variant="info" type="submit" onClick="">
