@@ -4,23 +4,30 @@ import API_KEY from '../../config'
 import LocationPin from './LocationPin'
 import './map.css'
 
-const Map = ({ location, zoomLevel }) => (
+const Map = ({ center, locations, zoomLevel }) => (
   <div className="map">
     <div className="google-map">
       <GoogleMapReact
         bootstrapURLKeys={{ key: API_KEY }}
-        defaultCenter={location}
+        defaultCenter={center}
         defaultZoom={zoomLevel}
       >
-        <LocationPin
-          lat={location.lat}
-          lng={location.lng}
-          text={location.address}
-        />
+        {
+          locations.map((location)=>{
+            return(
+              <LocationPin
+                key={location.attributes.OBJECTID}
+                lat={location.geometry.x}
+                lng={location.geometry.y}
+                text={location.attributes.STD_ADDR}
+              />
+            )
+          })
+        }
+        
       </GoogleMapReact>
     </div>
   </div>
 )
 
-
-  export default Map;
+export default Map;
