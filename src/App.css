@@ -4,6 +4,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .App-logo {
@@ -29,8 +30,6 @@
 } */
 
 .Body {
-  background-color: red;
-
 }
 .Footer {
   min-height: 10vh;
