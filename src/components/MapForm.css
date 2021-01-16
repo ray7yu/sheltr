@@ -4,6 +4,9 @@
 .Form{
 
 }
+#text-result{
+    display: none;
+}
 .userInput{
     width: 50%;
     margin: auto;
@@ -17,6 +20,32 @@
 .form-group1{
     /* margin-bottom: -10px; */
     margin: 0;
+    display: grid;
+    /* flex-direction: row; */
+    grid-template-columns: 40% 20% 40%;
+    align-items: center;
+    justify-content: center;
+}
+.checkbox-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+.text-checkbox{
+    font-weight: bold;
+    font-size: 150%;
+}
+.form-checkbox{
+    padding: 0 0 0 -20px;
+}
+.text-muted{
+    padding: 0px 20%;
+}
+.zipCode-group{
+    width: 100%;
+}
+#zipCode-text{
+    margin-bottom: 1em;
 }
