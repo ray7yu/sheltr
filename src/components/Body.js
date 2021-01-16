@@ -28,8 +28,6 @@ function Body() {
     })
   )
 
-  getPublicHousingDevelopments(40,45,-75,-70)
-
   return (
     <div className="Body">
         {/* <div className="Image">
