@@ -1,25 +1,39 @@
-import React from 'react';
+import React, {useState} from 'react';
+
 import './MapForm.css';
 import {FormControl, Form, Button, Dropdown } from 'react-bootstrap';
 
 
-function MapForm(){
-    function getLocation() {
+const MapForm = () => {
+    const getLocation = () => {
         if (navigator.geolocation) {
             // navigator.geolocation.getCurrentPosition(getPosition, showError);
             navigator.geolocation.getCurrentPosition(getPosition);
         }
     }
-    function getPosition(position){
+    const getPosition = (position) => {
         const location = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
         }
+        setLong(position.coords.longitude);
+        setLat(position.coords.latitude);
         console.log(position.coords.latitude, position.coords.longitude);
+        console.log(lat, long, option);
     }
+    const submitForm = () => {
+        console.log(lat, long, option);
+    }
+    const convertZip = (zip) => {
+        //Convert zip to lat and long and set new values
+    }
+    const [long, setLong] = useState("");
+    const [lat, setLat] = useState("");
+    // const [zip, setZip] = useState("");
+    const [option, setOption] = useState("Choose Option");
     return (
         <div className="userInput">
-            <Form >
+            <Form onSubmit={submitForm}>
                 <Form.Group controlId="formBasicCheckbox">
                     <Form.Label className="text-checkbox">
                         Select which items to display
@@ -31,13 +45,13 @@ function MapForm(){
                         <Form.Check type="checkbox" className="form-checkbox" label="Placeholder" /> */}
                         <Dropdown>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                Dropdown Button
+                                {option}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                <Dropdown.Item onClick={() => setOption("Shelter")}>Shelter</Dropdown.Item>
+                                <Dropdown.Item onClick={() => setOption("Food")}>Food</Dropdown.Item>
+                                <Dropdown.Item onClick={() => {}}>Something else</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
@@ -54,7 +68,7 @@ function MapForm(){
                     </Form.Text>
                     <div className="zipCode-group">
                         <Form.Label>Zip Code</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Zip Code" id="zipCode-text"/>
+                        <Form.Control type="text" placeholder="Enter Zip Code" id="zipCode-text" onChange={(event) => convertZip(event.target.value)}/>
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
