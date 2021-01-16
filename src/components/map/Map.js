@@ -17,9 +17,10 @@ const Map = ({ center, locations, zoomLevel }) => (
           locations.map((location)=>{
             return(
               <LocationPin
+                key={location.attributes.OBJECTID}
                 lat={location.geometry.x}
                 lng={location.geometry.y}
-                text={location.STD_ADDR}
+                text={location.attributes.STD_ADDR}
               />
             )
           })

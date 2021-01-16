@@ -22,11 +22,13 @@ function Body() {
     longmin.toString() +
     '%20AND%20LON%20%3C%3D%20'+
     longmax.toString() +
-    '&outFields=STD_ADDR,STD_CITY,STD_ST,STD_ZIP5&outSR=4326&f=json').then(res=>{
+    '&outFields=STD_ADDR,STD_CITY,STD_ST,STD_ZIP5,OBJECTID&outSR=4326&f=json').then(res=>{
         console.log(res.data.features)
         setPublicHousingDevelopments(res.data.features)
     })
   )
+
+  getPublicHousingDevelopments(40,45,-75,-70)
 
   return (
     <div className="Body">
