@@ -35,7 +35,11 @@ function Body() {
         {/* <div className="Image">
             <img src="/sheltr-white.png" alt="logo" className="Logo"/>
         </div> */}
-        <MapForm/>
+        <div className="Landing">
+            <div className="Welcome">Welcome to Sheltr!</div>
+            To find a homeless shelter, click to use your current location or enter your zipcode. You may set filters to adjust distance if necessary. 
+            <MapForm/>
+        </div>
         {/* <img src="/sheltr-white.png" alt="logo" className="Logo"/> */}
         <Map location={location} zoomLevel={17} />
     </div>

@@ -1,5 +1,4 @@
 .Navigation {
-    min-height: 10vh;
     font-family: 'Open Sans', sans-serif;
     display: flex;
     flex-direction: row;
@@ -8,6 +7,15 @@
 .Navbar {
    width: 100%;
    margin: -10px;
+}
+.custom-nav {
+    height: 65px;
+}
+.Link {
+    font-size: 1.2em;
+    margin-top: 11px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 .Image {
     width: 15%;
