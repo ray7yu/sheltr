@@ -93,7 +93,7 @@ function Body() {
 
       <div className="Main">
         <Row>
-          <Col>
+          <Col xs={6} sm={5}>
             <MapForm
               coords={coords}
               setCoords={setCoords}

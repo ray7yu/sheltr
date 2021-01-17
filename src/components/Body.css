@@ -3,12 +3,13 @@
 }
 
 .Map2{
-    padding: 40px;
-    margin-right: 40px;
+    margin-right: 80px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+ 
 }
-.Main {
 
-}
 .Welcome {
   font-weight: 700;
   font-size: 2.4em;
