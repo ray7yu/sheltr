@@ -13,6 +13,12 @@
  
 }
 
+.cimage{
+  height: 600px;
+  object-fit: cover;
+
+}
+
 .Welcome {
   font-weight: 700;
   font-size: 2.4em;
