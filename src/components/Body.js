@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Map from './map/Map'
 import './Body.css';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Carousel } from 'react-bootstrap';
 import MapForm from './MapForm';
 import axios from 'axios'
 
@@ -40,7 +40,44 @@ function Body() {
   return (
     <div className="Body">
       <div className="Splash">
-      <img src="/Landing.png" alt="" class="Wavy-color"></img>
+      <Carousel>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="/placeholder1.svg"
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="/placeholder2.svg"
+            alt="Third slide"
+          />
+
+          <Carousel.Caption>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="/placeholder3.svg"
+            alt="Third slide"
+          />
+
+          <Carousel.Caption>
+            <h3>Third slide label</h3>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+      {/*<img src="/Landing.png" alt="" class="Wavy-color"></img>
       {/* <div className="Image">
             <img src="/sheltr-white.png" alt="logo" className="Logo"/>
         </div> */}
