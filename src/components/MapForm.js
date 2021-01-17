@@ -52,7 +52,7 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
     useEffect(() => {
         // console.log(coords, option);
         getPublicHousingInfo(type, coords, 0.2);
-    }, [coords]);
+    }, [coords, type]);
     return (
     
         <div className="userInput">
@@ -92,25 +92,6 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
                                 }
                             >Left</button>
                         </div>
-                        {/* <Dropdown>
-                            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                {type}
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <Dropdown.Item 
-                                    onClick={() => setType("Developments")}>
-                                    Developments
-                                </Dropdown.Item>
-                                <Dropdown.Item 
-                                    onClick={() => setType("Authorities")}>
-                                    Authorities
-                                </Dropdown.Item>
-                                <Dropdown.Item 
-                                    onClick={() => setType("Buildings")}>
-                                    Buildings
-                                </Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown> */}
                     </div>
                 </Form.Group>
                 <Form.Label className="form-text">

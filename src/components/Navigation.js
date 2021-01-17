@@ -4,7 +4,7 @@ import { Form, FormControl, Nav, Navbar, Button, Container } from 'react-bootstr
 function Navigation() {
   return (
     <Navbar bg="dark" variant="dark" expand="sm" className="custom-nav">
-      <Navbar.Brand href="#map"> 
+      <Navbar.Brand> 
       <img
         alt=""
         src="sheltr-white.png"
@@ -19,8 +19,8 @@ function Navigation() {
 
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#about" className="Link">About</Nav.Link>
-          <Nav.Link href="#map" className="Link">Map</Nav.Link>
+          <Nav.Link className="Link">About</Nav.Link>
+          <Nav.Link className="Link">Map</Nav.Link>
           {/* <Nav.Link href="#pricing">Resources</Nav.Link> */}
         </Nav>
 
