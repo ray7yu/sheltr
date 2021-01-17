@@ -110,17 +110,12 @@ const MapForm = ({coords, setCoords, getPublicHousingInfo}) => {
                         Or
                     </Form.Text>
                     <div className="zipCode-group">
-<<<<<<< HEAD
-                        {/* <Form.Label>Zip Code</Form.Label> */}
-                        <Form.Control type="text" placeholder="Enter Zip Code" id="zipCode-text" onChange={(event) => setZip(event.target.value)} />
-=======
                         <Form.Label>Zip Code</Form.Label>
                         <Form.Control type="text" placeholder="Enter Zip Code" id="zipCode-text" onChange={(event) => {
                             setZip(event.target.value);
                             setZipErr(false);
                         }}/>
                         <div className={zipErr ? "error" : "invisible"}>Invalid Zipcode</div>
->>>>>>> b650d19cc3f30997bc6ceeebdb073b1fb71251b8
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
