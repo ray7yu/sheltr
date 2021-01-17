@@ -1,9 +1,3 @@
-.MapForm{
-
-}
-.Form{
-
-}
 #text-result{
     display: none;
 }
@@ -67,17 +61,17 @@
 .form-checkbox:active{
     outline: none;
     border: none;
-    /* background-color:rgba(0, 0, 0, 0.1); */
+    background-color:#7772B4;
     transform: scale(.95,.95);
 }
 .selected-button{
     outline: none;
     border: none;
-    background-color:rgb(100,100,100);
+    background-color:#7772B4;
 }
 .form-checkbox:hover{
     /* border: none; */
-    background-color:rgb(100,100,100);
+    background-color:#7772B4;
 }
 .form-checkbox:focus{
     /* border: none; */
@@ -100,4 +94,14 @@
 }
 .errMsg {
     margin-bottom: 5px;
+}
+.location-button{
+    background-color: #36316F !important;
+    color: white;
+    border: none !important;
+    outline: none;
+}
+.location-button:focus{
+    border: none !important;
+    outline: none !important;
 }

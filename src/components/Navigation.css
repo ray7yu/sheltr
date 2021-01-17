@@ -10,6 +10,7 @@
 }
 .custom-nav {
     height: 70px;
+    background-color: #05152F;
 }
 .Link {
     font-size: 1.4em;
@@ -17,6 +18,7 @@
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 0;
+    color: white !important;
 }
 .Image {
     width: 15%;

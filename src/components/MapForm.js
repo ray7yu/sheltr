@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-
 import './MapForm.css';
 import axios from 'axios';
 import { GEO_CODE_KEY } from '../config'
 import { FormControl, Form, Button, ButtonGroup, Dropdown } from 'react-bootstrap';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faLandmark, faCity, faBuilding} from "@fortawesome/free-solid-svg-icons";
 
 
 const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
@@ -58,7 +59,7 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
         <div className="userInput">
             <Form onSubmit={(event) => submitForm(event)}>
                 <Form.Label className="form-text">
-                Step #1
+                STEP #1
                 </Form.Label>
                 <Form.Group controlId="formBasicCheckbox">
                     <div className="checkbox-container">
@@ -70,7 +71,9 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
                                     event.preventDefault();
                                     setType("Authorities")}
                                 }
-                            >Left</button>
+                            >
+                                <FontAwesomeIcon icon={faLandmark} size='2x'/>
+                            </button>
                         </div>
                         <div className="btn-container">
                             <Form.Label className="btn-name">Public Housing Developments</Form.Label>
@@ -80,7 +83,9 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
                                     event.preventDefault();
                                     setType("Developments")}
                                 }
-                            >Left</button>
+                            >
+                                <FontAwesomeIcon icon={faCity} size='2x'/>
+                            </button>
                         </div>
                         <div className="btn-container">
                             <Form.Label className="btn-name">Public Housing Buildings</Form.Label>
@@ -90,15 +95,17 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
                                     event.preventDefault();
                                     setType("Buildings")}
                                 }
-                            >Left</button>
+                            >
+                                <FontAwesomeIcon icon={faBuilding} size='2x'/>
+                            </button>
                         </div>
                     </div>
                 </Form.Group>
                 <Form.Label className="form-text">
-                    Step #2
+                    STEP #2
                 </Form.Label>
                 <Form.Group controlId="formBasicEmail" className="form-group1">
-                    <Button variant="info" onClick={getLocation}>
+                    <Button className="location-button" onClick={getLocation}>
                         Use My Location
                     </Button>
                     <Form.Text className="text-muted">
@@ -111,7 +118,7 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
                             setZipErr(false);
                         }}/>
                         <div className={"errMsg " + (zipErr ? "error" : "invisible")}>Invalid Zipcode</div>
-                        <Button variant="primary" type="submit">
+                        <Button className="location-button" type="submit">
                             Submit
                         </Button>
                     </div>
