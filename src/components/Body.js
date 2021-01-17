@@ -84,7 +84,6 @@ function Body() {
 
       <div className="Main">
         <Row>
-<<<<<<< HEAD
           <Col xs={6} sm={5}>
             <MapForm
               coords={coords}
@@ -93,10 +92,6 @@ function Body() {
               type={type}
               setType={setType}
             />
-=======
-          <Col>
-            <MapForm coords={coords} setCoords={setCoords} getPublicHousingInfo={getPublicHousingInfo} type={type} setType={setType} />
->>>>>>> a88ffcea3b56992274cffb730f7deced23317190
           </Col>
           <Col>
             <Map center={coords} locations={publicHousingInfo} zoomLevel={10} className="Map" type={type} />
