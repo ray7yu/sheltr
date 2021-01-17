@@ -79,9 +79,6 @@ const Map = ( {center, locations, zoomLevel} ) => {
               <p>
                 Units Vacant:  {selected.attributes.REGULAR_VACANT}/{selected.attributes.TOTAL_OCCUPIED}
               </p>
-              <p>
-                Apartment Type:  {selected.attributes.APT_TYPE}
-              </p>
             </div>
           </InfoWindow>
           ) : console.log('infowindow fail')
