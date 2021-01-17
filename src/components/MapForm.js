@@ -22,11 +22,11 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
     }
     async function submitForm(event){
         // console.log(zip);
+        event.preventDefault();
         if(zip.length != 5){
             setZipErr(true);
             return;
         }
-        event.preventDefault();
         const res = await convertZip(zip);
         // console.log(res);
         setCoords({"lat": res.lat, "lng": res.lng});
@@ -64,28 +64,34 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
                     <div className="checkbox-container">
                         <div className="btn-container">
                             <Form.Label className="btn-name">Public Housing Authorities</Form.Label>
-                            <button className="form-checkbox">Left</button>
+                            <button 
+                                className={"form-checkbox " + (type === "Authorities" ? "selected-button" : "")}
+                                onClick={(event) => {
+                                    event.preventDefault();
+                                    setType("Authorities")}
+                                }
+                            >Left</button>
                         </div>
                         <div className="btn-container">
                             <Form.Label className="btn-name">Public Housing Developments</Form.Label>
-                            <button className="form-checkbox">Left</button>
+                            <button 
+                                className={"form-checkbox " + (type === "Developments" ? "selected-button" : "")}
+                                onClick={(event) => {
+                                    event.preventDefault();
+                                    setType("Developments")}
+                                }
+                            >Left</button>
                         </div>
                         <div className="btn-container">
                             <Form.Label className="btn-name">Public Housing Buildings</Form.Label>
-                            <button className="form-checkbox">Left</button>
+                            <button 
+                                className={"form-checkbox " + (type === "Buildings" ? "selected-button" : "")}
+                                onClick={(event) => {
+                                    event.preventDefault();
+                                    setType("Buildings")}
+                                }
+                            >Left</button>
                         </div>
-                        {/* <div className="btn-container">
-                            <Form.Label className="btn-name">Public Housing</Form.Label>
-                            <button className="form-checkbox"></button>
-                        </div> */}
-                        {/* <div className="btn-container">
-                            <Form.Label className="btn-name">Shelters</Form.Label>
-                            <button className="form-checkbox"></button>
-                        </div>
-                        <div className="btn-container">
-                            <Form.Label className="btn-name">Food Banks</Form.Label>
-                            <button className="form-checkbox"></button>
-                        </div> */}
                         {/* <Dropdown>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
                                 {type}
