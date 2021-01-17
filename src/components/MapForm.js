@@ -51,7 +51,7 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
     const [zipErr, setZipErr] = useState("");
     useEffect(() => {
         // console.log(coords, option);
-        getPublicHousingInfo(type, coords, 0.2);
+        getPublicHousingInfo(type, coords, 0.4);
     }, [coords]);
     return (
     
