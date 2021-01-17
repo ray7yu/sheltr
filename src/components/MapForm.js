@@ -6,7 +6,7 @@ import { GEO_CODE_KEY } from '../config'
 import { FormControl, Form, Button, Dropdown } from 'react-bootstrap';
 
 
-const MapForm = ({coords, setCoords}) => {
+const MapForm = ({coords, setCoords, getPublicHousingInfo}) => {
     async function getLocation(){
         if (navigator.geolocation) {
             // navigator.geolocation.getCurrentPosition(getPosition, showError);
@@ -21,28 +21,38 @@ const MapForm = ({coords, setCoords}) => {
         setCoords({"lat": position.coords.latitude, "lng": position.coords.longitude});
     }
     async function submitForm(event){
+        // console.log(zip);
+        if(zip.length != 5){
+            setZipErr(true);
+            return;
+        }
         event.preventDefault();
         const res = await convertZip(zip);
-        console.log(res);
+        // console.log(res);
         setCoords({"lat": res.lat, "lng": res.lng});
+        
     }
     async function convertZip(zip){
         let newCoords = {}
         await axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + zip.toString() + "&key=" + GEO_CODE_KEY)
             .then(res => {
-                newCoords.lat = res.data.results[0].geometry.bounds.northeast.lat;
-                newCoords.lng = res.data.results[0].geometry.bounds.northeast.lng;
+                // console.log(res);
+                newCoords.lat = res.data.results[0].geometry.bounds ? res.data.results[0].geometry.bounds.northeast.lat : res.data.results[0].geometry.location.lat;
+                newCoords.lng = res.data.results[0].geometry.bounds ? res.data.results[0].geometry.bounds.northeast.lng : res.data.results[0].geometry.location.lng;
             })
             .catch(error => {
                 console.log(error);
             });
+        // console.log(newCoords);
         return newCoords;
     }
 
     const [zip, setZip] = useState("");
+    const [zipErr, setZipErr] = useState("");
     const [option, setOption] = useState("Shelter");
     useEffect(() => {
-        console.log(coords, option);
+        // console.log(coords, option);
+        getPublicHousingInfo("Developments", coords, 0.2);
     }, [coords]);
     return (
         <div className="userInput">
@@ -73,7 +83,11 @@ const MapForm = ({coords, setCoords}) => {
                     </Form.Text>
                     <div className="zipCode-group">
                         <Form.Label>Zip Code</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Zip Code" id="zipCode-text" onChange={(event) => setZip(event.target.value)} />
+                        <Form.Control type="text" placeholder="Enter Zip Code" id="zipCode-text" onChange={(event) => {
+                            setZip(event.target.value);
+                            setZipErr(false);
+                        }}/>
+                        <div className={zipErr ? "error" : "invisible"}>Invalid Zipcode</div>
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>

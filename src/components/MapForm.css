@@ -50,3 +50,9 @@
 #zipCode-text{
     margin-bottom: 1em;
 }
+.Error {
+    color: red;
+}  
+.Invisible {
+    display: none
+}
