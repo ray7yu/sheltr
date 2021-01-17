@@ -12,8 +12,9 @@ const defaultCenter = {
 }
 
 function Body() {
-  const [ showMap, setShowMap ] = useState(false);
+  const [showMap, setShowMap ] = useState(false);
   const [publicHousingInfo, setPublicHousingInfo] = useState([]);
+  const [type, setType] = useState('Developments');
   
   //type = 'Authorities', 'Buildings', or 'Developments'
   const getPublicHousingInfo = (type, coords, bounds) => (
@@ -57,8 +58,8 @@ function Body() {
       </Row>
       </div>
       <div className="Function">
-        <MapForm coords={coords} setCoords={setCoords} getPublicHousingInfo={getPublicHousingInfo}/>
-        <Map center={coords} locations={publicHousingInfo} zoomLevel={10} className="Map" />
+        <MapForm coords={coords} setCoords={setCoords} getPublicHousingInfo={getPublicHousingInfo} type={type} setType={setType}/>
+        <Map center={coords} locations={publicHousingInfo} zoomLevel={10} className="Map" type={type}/>
       </div>
     </div>
   );
