@@ -70,7 +70,7 @@ function Body() {
 
       {/* <img src="/sheltr-white.png" alt="logo" className="Logo"/> */}
       <button onClick={() => { getPublicHousingDevelopments(40, 45, -75, -70) }}>test</button>
-      <Map center={center} locations={publicHousingDevelopments} zoomLevel={17} />
+      <Map center={center} locations={publicHousingDevelopments} zoomLevel={13} />
     </div>
   );
 }

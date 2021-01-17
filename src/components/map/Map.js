@@ -16,7 +16,8 @@ const Map = ({ center, locations, zoomLevel }) => (
           lat={40.7128}
           lng={-74.0060}
         />
-        {/*
+        {
+          locations ?
           locations.map((location)=>{
             return(
               <LocationPin
@@ -26,8 +27,8 @@ const Map = ({ center, locations, zoomLevel }) => (
                 text={location.attributes.STD_ADDR}
               />
             )
-          })
-        */}
+          }) : null
+        }
         
       </GoogleMapReact>
     </div>
