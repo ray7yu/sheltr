@@ -82,7 +82,7 @@ function Body() {
 
 
 
-      <Container>
+      <div className="Main">
         <Row>
           <Col>
             <MapForm coords={coords} setCoords={setCoords} getPublicHousingInfo={getPublicHousingInfo} type={type} setType={setType} />
@@ -91,7 +91,7 @@ function Body() {
             <Map center={coords} locations={publicHousingInfo} zoomLevel={10} className="Map" type={type} />
           </Col>
         </Row>
-      </Container>
+      </div>
 
 
     </div>

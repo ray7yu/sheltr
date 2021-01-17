@@ -1,43 +1,40 @@
 .Image {
-    width: 15%;
+  width: 15%;
 }
 
-.main{ padding: 20px;}
+.Map {
+    background-color: red;
+}
+.Main {
+
+}
 .Welcome {
-    font-weight: 700;
-    font-size: 2.4em;
+  font-weight: 700;
+  font-size: 2.4em;
 }
 .Body {
-    display: inline-block;
+  display: inline-block;
 
-    /* min-height: 700px; */
+  /* min-height: 700px; */
 }
 .Logo {
-    height: auto;
-    width: 100%;
+  height: auto;
+  width: 100%;
 }
-
-.Carousel {
-    max-height: 40px;
-    width: auto;
-    overflow: hidden;
-  }
 
 .Splash {
   max-height: 600px;
-
 }
 .Function {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
-.Wavy-color{
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    right:0;
-    width:140%;
-    min-width:1200px;
-  }
-
+.Wavy-color {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  width: 140%;
+  min-width: 1200px;
+}
