@@ -48,3 +48,15 @@
   width: 140%;
   min-width: 1200px;
 }
+
+
+.caracaption{
+  text-align: left;
+  font-size: 30px;
+  text-shadow: 0px 0px 10px black;
+  margin-bottom: 200px;
+}
+
+.h1{
+  font-size: 30px;
+}
