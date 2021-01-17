@@ -14,6 +14,7 @@ const Map = ( {center, locations, zoomLevel} ) => {
       width: "100%"
     }
   }
+  
   return (
     <LoadScript
       id="script-loader"
