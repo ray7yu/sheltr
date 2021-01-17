@@ -148,7 +148,7 @@ const MapForm = ({
         <Form.Label className="form-text">
           <div className="step">
             <div className="stepnumber">2</div>
-            <div className="steptext">Share you location</div>
+            <div className="steptext">Share your location</div>
           </div>
         </Form.Label>
         <Form.Group controlId="formBasicEmail" className="form-group1">
