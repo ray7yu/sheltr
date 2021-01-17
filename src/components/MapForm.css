@@ -9,8 +9,11 @@
 }
 .userInput{
     padding: 10px 10px 0 10px;
-    width: 90%;
-    margin: auto;
+    max-width: 400px;
+    margin: 0px auto 0px auto;
+    background-color: #EBEBEB;
+    height: 700px;
+
 }
 .form-container{
     margin-top: 0em;
