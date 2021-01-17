@@ -32,9 +32,11 @@ function Body() {
       setShowMap(true)
     })
   )
-
-
-
+  const coordHandler = coords => {
+    setCoords(coords);
+    console.log("Hi");
+  }
+  const [coords, setCoords] = useState("");
   return (
     <div className="Body">
       <div className="Splash">
