@@ -16,8 +16,8 @@
 }
 .Body {
     display: inline-block;
-    padding: 25px 10px;
-    min-height: 700px;
+    padding: 25px 10px 0 10px;
+    /* min-height: 700px; */
 }
 .Logo {
     height: auto;
@@ -25,7 +25,7 @@
 }
 
 .Splash {
-    height: 60%;
+    height: 400px;
     padding-top: 5%
 }
 .Function {
@@ -44,4 +44,7 @@
 .Map{
     border: 1px solid lightgray;
     min-width: 300px;
+}
+.Form {
+    width: 50%;
 }

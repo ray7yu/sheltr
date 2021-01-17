@@ -57,7 +57,7 @@ function Body() {
       </Row>
       </div>
       <div className="Function">
-        <MapForm coords={coords} setCoords={setCoords} className="Form"/>
+        <MapForm coords={coords} setCoords={setCoords}/>
         <Map center={defaultCenter} locations={publicHousingInfo} zoomLevel={10} className="Map" />
       </div>
     </div>
