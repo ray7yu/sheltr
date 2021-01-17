@@ -54,6 +54,7 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
         getPublicHousingInfo(type, coords, 0.2);
     }, [coords]);
     return (
+    
         <div className="userInput">
             <Form onSubmit={(event) => submitForm(event)}>
                 <Form.Label className="form-text">

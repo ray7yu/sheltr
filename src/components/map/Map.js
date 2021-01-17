@@ -16,10 +16,13 @@ const Map = ( {center, locations, zoomLevel} ) => {
 
   const mapStyles = () => {
     return {
-      marginTop: "-1px",
-      height: "80vh",
+
       width: "100%",
-      minWidth: "400px",
+      height: "100%", 
+      borderRadius: "10px",
+      marginTop: "40px",
+      marginBottom: "120px"
+
     }
   }
   
