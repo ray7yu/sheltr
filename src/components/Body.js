@@ -1,14 +1,14 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import Map from './map/Map.js'
+import React, { useState } from 'react';
+import Map from './map/Map'
 import './Body.css';
 import { Row, Col } from 'react-bootstrap';
 import MapForm from './MapForm';
 import axios from 'axios'
 
 
-const center = {
-  lat: 40.7128,
-  lng: -74.0060,
+const defaultCenter = {
+  lat: 38.5382,
+  lng: -121.7617,
 }
 
 function Body() {
@@ -27,20 +27,19 @@ function Body() {
     longmin.toString() +
     '%20AND%20LON%20%3C%3D%20'+
     longmax.toString() +
-    '&outFields=STD_ADDR,STD_CITY,STD_ST,STD_ZIP5,OBJECTID&outSR=4326&f=json').then(res=>{
+    '&outFields=STD_ADDR,STD_CITY,STD_ST,STD_ZIP5,OBJECTID,SPENDING_PER_MONTH_PREV_YR,HA_PHN_NUM&outSR=4326&f=json').then(res=>{
       setPublicHousingInfo(res.data.features)
       setShowMap(true)
     })
   )
   const coordHandler = coords => {
     setCoords(coords);
-    console.log("Hi");
   }
-  const [coords, setCoords] = useState("");
+  const [coords, setCoords] = useState(defaultCenter);
   return (
     <div className="Body">
       <div className="Splash">
-      <button onClick={() => { getPublicHousingInfo('Buildings', 42, 45, -75, -70) }}>test</button>
+      <button onClick={() => { getPublicHousingInfo('Developments', 38, 39, -122, -121) }}>test</button>
       <img src="/Landing.png" alt="" class="Wavy-color"></img>
       {/* <div className="Image">
             <img src="/sheltr-white.png" alt="logo" className="Logo"/>
@@ -57,9 +56,7 @@ function Body() {
         </Col>
       </Row>
       </div>
-      {
-        showMap ? <Map center={center} locations={publicHousingInfo} zoomLevel={13} /> : null
-      }
+      <Map center={defaultCenter} locations={publicHousingInfo} zoomLevel={10} />
     </div>
   );
 }

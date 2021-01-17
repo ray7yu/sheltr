@@ -1,11 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {GoogleMap, LoadScript, Marker, InfoWindow} from '@react-google-maps/api'
 import {API_KEY} from '../../config'
-import LocationPin from './LocationPin'
-import './map.css'
 
 const Map = ( {center, locations, zoomLevel} ) => {
-  console.log(locations[0].geometry.x)
+  const [ selected, setSelected ] = useState({});
+  const [ currentPosition, setCurrentPosition ] = useState({});
+
+  const onSelect = item => {
+    console.log(item)
+    setSelected(item);
+  }
 
   const mapStyles = () => {
     return {
@@ -24,40 +28,36 @@ const Map = ( {center, locations, zoomLevel} ) => {
         id='example-map'
         mapContainerStyle={mapStyles()}
         draggable={true}
-        zoom={5}
+        zoom={zoomLevel}
         center={center}
       >
         {
           locations ?
           locations.map(location => {
-            const pos = {lat: parseFloat(location.geometry.y), lng: parseFloat(location.geometry.x)}
-            console.log(pos)
-            console.log(center)
             return (
             <Marker 
             key={location.attributes.OBJECTID}
-            position={pos}
+            position={{lat: location.geometry.y, lng: location.geometry.x}}
+            onClick={() => onSelect(location)}
             />
             )
-          }): console.log('fail')
+          }): console.log('locations fail')
         }
-        {/*
-          selected.location ?
+        {
+          selected.geometry ?
           (
             <InfoWindow
-            position={selected.location}
+            position={{lat: selected.geometry.y, lng: selected.geometry.x}}
             onCloseClick={() => setSelected({})}
           >
             <div className="infowindow">
-              <p>{selected.title}</p>
-              <img src={selected.image} className="small-image" alt="rental"/>
-              <p>price: {selected.price}</p>
-              <p>sqm2: {selected.sqm}</p>
-              <p>bedrooms: {selected.bedrooms}</p>
+              <p>{selected.attributes.STD_ADDR}</p>
+              <p>{selected.attributes.STD_CITY}, {selected.attributes.STD_ST}, {selected.attributes.STD_ZIP5}</p>
+              <p>{selected.attributes.HA_PHN_NUM.toString().replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2 - $3')}</p>
             </div>
           </InfoWindow>
-          ) : null
-          */}
+          ) : console.log('infowindow fail')
+          }
       </GoogleMap>
     </LoadScript>
   )
