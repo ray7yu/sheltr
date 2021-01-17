@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './MapForm.css';
 import axios from 'axios';
 import { GEO_CODE_KEY } from '../config'
-import { FormControl, Form, Button, Dropdown } from 'react-bootstrap';
+import { FormControl, Form, Button, ButtonGroup, Dropdown } from 'react-bootstrap';
 
 
 const MapForm = ({coords, setCoords}) => {
@@ -47,11 +47,36 @@ const MapForm = ({coords, setCoords}) => {
     return (
         <div className="userInput">
             <Form onSubmit={(event) => submitForm(event)}>
+                <Form.Label className="form-text">
+                Step #1
+                </Form.Label>
                 <Form.Group controlId="formBasicCheckbox">
-                    <Form.Label className="text-checkbox">
-                    </Form.Label>
                     <div className="checkbox-container">
-                        <Dropdown>
+                        <div className="btn-container">
+                            <Form.Label className="btn-name">Public Housing Authorities</Form.Label>
+                            <button className="form-checkbox">Left</button>
+                        </div>
+                        <div className="btn-container">
+                            <Form.Label className="btn-name">Public Housing Developments</Form.Label>
+                            <button className="form-checkbox">Left</button>
+                        </div>
+                        <div className="btn-container">
+                            <Form.Label className="btn-name">Public Housing Buildings</Form.Label>
+                            <button className="form-checkbox">Left</button>
+                        </div>
+                        {/* <div className="btn-container">
+                            <Form.Label className="btn-name">Public Housing</Form.Label>
+                            <button className="form-checkbox"></button>
+                        </div> */}
+                        {/* <div className="btn-container">
+                            <Form.Label className="btn-name">Shelters</Form.Label>
+                            <button className="form-checkbox"></button>
+                        </div>
+                        <div className="btn-container">
+                            <Form.Label className="btn-name">Food Banks</Form.Label>
+                            <button className="form-checkbox"></button>
+                        </div> */}
+                        {/* <Dropdown>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
                                 {option}
                             </Dropdown.Toggle>
@@ -59,11 +84,14 @@ const MapForm = ({coords, setCoords}) => {
                             <Dropdown.Menu>
                                 <Dropdown.Item onClick={() => setOption("Shelter")}>Shelter</Dropdown.Item>
                                 <Dropdown.Item onClick={() => setOption("Food")}>Food</Dropdown.Item>
-                                {/* <Dropdown.Item onClick={() => { }}>Something else</Dropdown.Item> */}
+                                <Dropdown.Item onClick={() => { }}>Something else</Dropdown.Item>
                             </Dropdown.Menu>
-                        </Dropdown>
+                        </Dropdown> */}
                     </div>
                 </Form.Group>
+                <Form.Label className="form-text">
+                    Step #2
+                </Form.Label>
                 <Form.Group controlId="formBasicEmail" className="form-group1">
                     <Button variant="info" onClick={getLocation}>
                         Use My Location
@@ -72,7 +100,7 @@ const MapForm = ({coords, setCoords}) => {
                         Or
                     </Form.Text>
                     <div className="zipCode-group">
-                        <Form.Label>Zip Code</Form.Label>
+                        {/* <Form.Label>Zip Code</Form.Label> */}
                         <Form.Control type="text" placeholder="Enter Zip Code" id="zipCode-text" onChange={(event) => setZip(event.target.value)} />
                         <Button variant="primary" type="submit">
                             Submit
