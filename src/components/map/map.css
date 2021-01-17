@@ -38,14 +38,11 @@
   }
 
   .pin {
-<<<<<<< HEAD
     display: flex;
     align-items: center;
     transform: translate(-33%, -100%);
     color: var(--main-blue);
-=======
     width: 15vw;
->>>>>>> style-venkat
   }
 
   .pin-icon {
