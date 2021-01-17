@@ -15,7 +15,8 @@ const Map = ( {center, locations, zoomLevel} ) => {
     return {
       marginTop: "-1px",
       height: "80vh",
-      width: "100%"
+      width: "100%",
+      minWidth: "400px",
     }
   }
   

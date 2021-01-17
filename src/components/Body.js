@@ -52,11 +52,14 @@ function Body() {
             </div>
         </Col>
         <Col>
-          <MapForm coords={coords} setCoords={setCoords}/>
+          
         </Col>
       </Row>
       </div>
-      <Map center={defaultCenter} locations={publicHousingInfo} zoomLevel={10} />
+      <div className="Function">
+        <MapForm coords={coords} setCoords={setCoords} className="Form"/>
+        <Map center={defaultCenter} locations={publicHousingInfo} zoomLevel={10} className="Map" />
+      </div>
     </div>
   );
 }
