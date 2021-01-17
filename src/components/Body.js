@@ -48,8 +48,8 @@ function Body() {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>SHELTR</h3>
+            <p>To find a homeless shelter, click to use your current location or enter your zipcode. You may set filters to adjust distance if necessary.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -60,9 +60,9 @@ function Body() {
           />
 
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
+          <h3>SHELTR</h3>
+            <p>To find a homeless shelter, click to use your current location or enter your zipcode. You may set filters to adjust distance if necessary.</p>
+               </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img
@@ -72,9 +72,9 @@ function Body() {
           />
 
           <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </Carousel.Caption>
+          <h3>SHELTR</h3>
+            <p>To find a homeless shelter, click to use your current location or enter your zipcode. You may set filters to adjust distance if necessary.</p>
+         </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
       {/*<img src="/Landing.png" alt="" class="Wavy-color"></img>
@@ -83,20 +83,15 @@ function Body() {
         </div> */}
       <Row>
         <Col>
-          <div className="Landing">
-            <div className="Welcome">SHELTR.</div>
-            To find a homeless shelter, click to use your current location or enter your zipcode. You may set filters to adjust distance if necessary.
-            </div>
+        <MapForm coords={coords} setCoords={setCoords} getPublicHousingInfo={getPublicHousingInfo} type={type} setType={setType}/>
         </Col>
         <Col>
+        <Map center={coords} locations={publicHousingInfo} zoomLevel={10} className="Map" type={type}/>
           
         </Col>
       </Row>
       </div>
-      <div className="Function">
-        <MapForm coords={coords} setCoords={setCoords} getPublicHousingInfo={getPublicHousingInfo} type={type} setType={setType}/>
-        <Map center={coords} locations={publicHousingInfo} zoomLevel={10} className="Map" type={type}/>
-      </div>
+
     </div>
   );
 }
