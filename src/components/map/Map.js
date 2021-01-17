@@ -12,7 +12,11 @@ const Map = ({ center, locations, zoomLevel }) => (
         defaultCenter={center}
         defaultZoom={zoomLevel}
       >
-        {
+        <LocationPin
+          lat={40.7128}
+          lng={-74.0060}
+        />
+        {/*
           locations.map((location)=>{
             return(
               <LocationPin
@@ -23,7 +27,7 @@ const Map = ({ center, locations, zoomLevel }) => (
               />
             )
           })
-        }
+        */}
         
       </GoogleMapReact>
     </div>
