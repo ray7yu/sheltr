@@ -46,7 +46,7 @@ function Body() {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="/placeholder1.svg"
+              src="/image1.jpg"
               alt="First slide"
             />
             <Carousel.Caption>
@@ -57,8 +57,8 @@ function Body() {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="/placeholder2.svg"
-              alt="Third slide"
+              src="/image2.jpg"
+              alt="Second slide"
             />
 
             <Carousel.Caption>
@@ -69,7 +69,7 @@ function Body() {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="/placeholder3.svg"
+              src="/image3.jpg"
               alt="Third slide"
             />
 
