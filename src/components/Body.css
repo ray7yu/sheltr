@@ -1,9 +1,12 @@
 .Image {
   width: 15%;
 }
-
+.row {
+    margin: auto 0 !important;
+}
 .Map2{
-    margin-right: 80px;
+    /* margin-right: 80px; */
+    margin-right: auto;
     padding-right: 40px;
     padding-top: 40px;
     padding-bottom: 40px;
@@ -16,7 +19,6 @@
 }
 .Body {
   display: inline-block;
-
   /* min-height: 700px; */
 }
 .Logo {
