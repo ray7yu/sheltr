@@ -32,6 +32,7 @@ const MapForm = () => {
             .then((data) => {
                 res.lat = data.results[0].geometry.bounds.northeast.lat
                 res.lng = data.results[0].geometry.bounds.northeast.lng
+                console.log(res);
             })
         return res
     }
