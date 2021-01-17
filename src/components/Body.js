@@ -93,7 +93,7 @@ function Body() {
               setType={setType}
             />
           </Col>
-          <Col>
+          <Col className="Map2">
             <Map center={coords} locations={publicHousingInfo} zoomLevel={10} className="Map" type={type} />
           </Col>
         </Row>
