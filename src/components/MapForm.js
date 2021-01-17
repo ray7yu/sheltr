@@ -6,7 +6,7 @@ import { GEO_CODE_KEY } from '../config'
 import { FormControl, Form, Button, Dropdown } from 'react-bootstrap';
 
 
-const MapForm = () => {
+const MapForm = ({coords, setCoords}) => {
     async function getLocation(){
         if (navigator.geolocation) {
             // navigator.geolocation.getCurrentPosition(getPosition, showError);
@@ -27,19 +27,18 @@ const MapForm = () => {
         setCoords({"lat": res.lat, "lng": res.lng});
     }
     async function convertZip(zip){
-        let coords = {}
+        let newCoords = {}
         await axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + zip.toString() + "&key=" + GEO_CODE_KEY)
             .then(res => {
-                coords.lat = res.data.results[0].geometry.bounds.northeast.lat;
-                coords.lng = res.data.results[0].geometry.bounds.northeast.lng;
+                newCoords.lat = res.data.results[0].geometry.bounds.northeast.lat;
+                newCoords.lng = res.data.results[0].geometry.bounds.northeast.lng;
             })
             .catch(error => {
                 console.log(error);
             });
-        return coords
+        return newCoords;
     }
 
-    const [coords, setCoords] = useState("");
     const [zip, setZip] = useState("");
     const [option, setOption] = useState("Shelter");
     useEffect(() => {
@@ -52,10 +51,6 @@ const MapForm = () => {
                     <Form.Label className="text-checkbox">
                     </Form.Label>
                     <div className="checkbox-container">
-                        {/* <Form.Check type="checkbox" className="form-checkbox" label="Homeless Shelters" />
-                        <Form.Check type="checkbox" className="form-checkbox" label="Public Housing" />
-                        <Form.Check type="checkbox" className="form-checkbox" label="Housing Development" />
-                        <Form.Check type="checkbox" className="form-checkbox" label="Placeholder" /> */}
                         <Dropdown>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
                                 {option}
@@ -64,18 +59,15 @@ const MapForm = () => {
                             <Dropdown.Menu>
                                 <Dropdown.Item onClick={() => setOption("Shelter")}>Shelter</Dropdown.Item>
                                 <Dropdown.Item onClick={() => setOption("Food")}>Food</Dropdown.Item>
-                                <Dropdown.Item onClick={() => { }}>Something else</Dropdown.Item>
+                                {/* <Dropdown.Item onClick={() => { }}>Something else</Dropdown.Item> */}
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail" className="form-group1">
-                    {/* <Form.Label>Use My Location</Form.Label> */}
                     <Button variant="info" onClick={getLocation}>
                         Use My Location
                     </Button>
-                    {/* <Form.Text id="text-result">
-                    </Form.Text> */}
                     <Form.Text className="text-muted">
                         Or
                     </Form.Text>
@@ -87,9 +79,6 @@ const MapForm = () => {
                         </Button>
                     </div>
                 </Form.Group>
-                {/* <Form.Group controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group> */}
             </Form>
         </div>
     );
