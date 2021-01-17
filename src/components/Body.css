@@ -16,7 +16,7 @@
 }
 .Body {
     display: inline-block;
-    padding: 25px 10px 0 10px;
+
     /* min-height: 700px; */
 }
 .Logo {
@@ -26,7 +26,7 @@
 
 .Splash {
     height: 400px;
-    padding-top: 5%
+
 }
 .Function {
     display: flex;

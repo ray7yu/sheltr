@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Map from './map/Map'
 import './Body.css';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Carousel } from 'react-bootstrap';
 import MapForm from './MapForm';
 import axios from 'axios'
 
@@ -12,8 +12,9 @@ const defaultCenter = {
 }
 
 function Body() {
-  const [ showMap, setShowMap ] = useState(false);
+  const [showMap, setShowMap ] = useState(false);
   const [publicHousingInfo, setPublicHousingInfo] = useState([]);
+  const [type, setType] = useState('Developments');
   
   //type = 'Authorities', 'Buildings', or 'Developments'
   const getPublicHousingInfo = (type, coords, bounds) => (
@@ -39,27 +40,58 @@ function Body() {
   return (
     <div className="Body">
       <div className="Splash">
-      {/*<button onClick={() => { getPublicHousingInfo('Developments', coords, 0.2) }}>test</button>*/}
-      <img src="/Landing.png" alt="" class="Wavy-color"></img>
+      <Carousel>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="/placeholder1.svg"
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h3>SHELTR</h3>
+            <p>To find a homeless shelter, click to use your current location or enter your zipcode. You may set filters to adjust distance if necessary.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="/placeholder2.svg"
+            alt="Third slide"
+          />
+
+          <Carousel.Caption>
+          <h3>SHELTR</h3>
+            <p>To find a homeless shelter, click to use your current location or enter your zipcode. You may set filters to adjust distance if necessary.</p>
+               </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="/placeholder3.svg"
+            alt="Third slide"
+          />
+
+          <Carousel.Caption>
+          <h3>SHELTR</h3>
+            <p>To find a homeless shelter, click to use your current location or enter your zipcode. You may set filters to adjust distance if necessary.</p>
+         </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+      {/*<img src="/Landing.png" alt="" class="Wavy-color"></img>
       {/* <div className="Image">
             <img src="/sheltr-white.png" alt="logo" className="Logo"/>
         </div> */}
       <Row>
         <Col>
-          <div className="Landing">
-            <div className="Welcome">SHELTR.</div>
-            To find a homeless shelter, click to use your current location or enter your zipcode. You may set filters to adjust distance if necessary.
-            </div>
+        <MapForm coords={coords} setCoords={setCoords} getPublicHousingInfo={getPublicHousingInfo} type={type} setType={setType}/>
         </Col>
         <Col>
+        <Map center={coords} locations={publicHousingInfo} zoomLevel={10} className="Map" type={type}/>
           
         </Col>
       </Row>
       </div>
-      <div className="Function">
-        <MapForm coords={coords} setCoords={setCoords} getPublicHousingInfo={getPublicHousingInfo}/>
-        <Map center={coords} locations={publicHousingInfo} zoomLevel={10} className="Map" />
-      </div>
+
     </div>
   );
 }

@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react';
 import './MapForm.css';
 import axios from 'axios';
 import { GEO_CODE_KEY } from '../config'
-import { FormControl, Form, Button, Dropdown } from 'react-bootstrap';
+import { FormControl, Form, Button, ButtonGroup, Dropdown } from 'react-bootstrap';
 
 
-const MapForm = ({coords, setCoords, getPublicHousingInfo}) => {
+const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
     async function getLocation(){
         if (navigator.geolocation) {
             // navigator.geolocation.getCurrentPosition(getPosition, showError);
@@ -49,31 +49,72 @@ const MapForm = ({coords, setCoords, getPublicHousingInfo}) => {
 
     const [zip, setZip] = useState("");
     const [zipErr, setZipErr] = useState("");
-    const [option, setOption] = useState("Shelter");
     useEffect(() => {
         // console.log(coords, option);
-        getPublicHousingInfo("Developments", coords, 0.2);
+        getPublicHousingInfo(type, coords, 0.2);
     }, [coords]);
     return (
         <div className="userInput">
             <Form onSubmit={(event) => submitForm(event)}>
+                <Form.Label className="form-text">
+                Step #1
+                </Form.Label>
                 <Form.Group controlId="formBasicCheckbox">
-                    <Form.Label className="text-checkbox">
-                    </Form.Label>
                     <div className="checkbox-container">
-                        <Dropdown>
+                        <div className="btn-container">
+                            <Form.Label className="btn-name">Public Housing Authorities</Form.Label>
+                            <button className="form-checkbox">Left</button>
+                        </div>
+                        <div className="btn-container">
+                            <Form.Label className="btn-name">Public Housing Developments</Form.Label>
+                            <button className="form-checkbox">Left</button>
+                        </div>
+                        <div className="btn-container">
+                            <Form.Label className="btn-name">Public Housing Buildings</Form.Label>
+                            <button className="form-checkbox">Left</button>
+                        </div>
+                        {/* <div className="btn-container">
+                            <Form.Label className="btn-name">Public Housing</Form.Label>
+                            <button className="form-checkbox"></button>
+                        </div> */}
+                        {/* <div className="btn-container">
+                            <Form.Label className="btn-name">Shelters</Form.Label>
+                            <button className="form-checkbox"></button>
+                        </div>
+                        <div className="btn-container">
+                            <Form.Label className="btn-name">Food Banks</Form.Label>
+                            <button className="form-checkbox"></button>
+                        </div> */}
+                        {/* <Dropdown>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                {option}
+                                {type}
                             </Dropdown.Toggle>
-
                             <Dropdown.Menu>
+<<<<<<< HEAD
                                 <Dropdown.Item onClick={() => setOption("Shelter")}>Shelter</Dropdown.Item>
                                 <Dropdown.Item onClick={() => setOption("Food")}>Food</Dropdown.Item>
-                                {/* <Dropdown.Item onClick={() => { }}>Something else</Dropdown.Item> */}
+                                <Dropdown.Item onClick={() => { }}>Something else</Dropdown.Item>
+=======
+                                <Dropdown.Item 
+                                    onClick={() => setType("Developments")}>
+                                    Developments
+                                </Dropdown.Item>
+                                <Dropdown.Item 
+                                    onClick={() => setType("Authorities")}>
+                                    Authorities
+                                </Dropdown.Item>
+                                <Dropdown.Item 
+                                    onClick={() => setType("Buildings")}>
+                                    Buildings
+                                </Dropdown.Item>
+>>>>>>> 44591d55bc9064244f7031e81c4d45aaea55b6db
                             </Dropdown.Menu>
-                        </Dropdown>
+                        </Dropdown> */}
                     </div>
                 </Form.Group>
+                <Form.Label className="form-text">
+                    Step #2
+                </Form.Label>
                 <Form.Group controlId="formBasicEmail" className="form-group1">
                     <Button variant="info" onClick={getLocation}>
                         Use My Location
@@ -87,7 +128,7 @@ const MapForm = ({coords, setCoords, getPublicHousingInfo}) => {
                             setZip(event.target.value);
                             setZipErr(false);
                         }}/>
-                        <div className={zipErr ? "error" : "invisible"}>Invalid Zipcode</div>
+                        <div className={"errMsg " + (zipErr ? "error" : "invisible")}>Invalid Zipcode</div>
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
