@@ -39,7 +39,6 @@ function Body() {
   return (
     <div className="Body">
       <div className="Splash">
-      <button onClick={() => { getPublicHousingInfo('Developments', coords, 0.2) }}>test</button>
       <img src="/Landing.png" alt="" class="Wavy-color"></img>
       {/* <div className="Image">
             <img src="/sheltr-white.png" alt="logo" className="Logo"/>
