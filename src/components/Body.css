@@ -1,15 +1,8 @@
 .Image {
     width: 15%;
 }
-.Landing {
-    width: 50%;
-    text-align: center;
-    margin: auto;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
 
-    border-radius: 10px;
-}
+.main{ padding: 20px;}
 .Welcome {
     font-weight: 700;
     font-size: 2.4em;
@@ -24,8 +17,14 @@
     width: 100%;
 }
 
+.Carousel {
+    max-height: 40px;
+    width: auto;
+    overflow: hidden;
+  }
+
 .Splash {
-    height: 400px;
+  max-height: 600px;
 
 }
 .Function {
@@ -41,10 +40,4 @@
     width:140%;
     min-width:1200px;
   }
-.Map{
-    border: 1px solid lightgray;
-    min-width: 300px;
-}
-.Form {
-    width: 50%;
-}
+

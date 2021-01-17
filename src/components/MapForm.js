@@ -54,6 +54,7 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
         getPublicHousingInfo(type, coords, 0.2);
     }, [coords]);
     return (
+    
         <div className="userInput">
             <Form onSubmit={(event) => submitForm(event)}>
                 <Form.Label className="form-text">
@@ -90,11 +91,6 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
                                 {type}
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-<<<<<<< HEAD
-                                <Dropdown.Item onClick={() => setOption("Shelter")}>Shelter</Dropdown.Item>
-                                <Dropdown.Item onClick={() => setOption("Food")}>Food</Dropdown.Item>
-                                <Dropdown.Item onClick={() => { }}>Something else</Dropdown.Item>
-=======
                                 <Dropdown.Item 
                                     onClick={() => setType("Developments")}>
                                     Developments
@@ -107,7 +103,6 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
                                     onClick={() => setType("Buildings")}>
                                     Buildings
                                 </Dropdown.Item>
->>>>>>> 44591d55bc9064244f7031e81c4d45aaea55b6db
                             </Dropdown.Menu>
                         </Dropdown> */}
                     </div>

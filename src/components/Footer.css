@@ -14,8 +14,13 @@
     text-align: left;
     align-items: center;
     display: flex;
+    color: white;
     flex-direction: row;
     padding: 0 10px;
-    min-height: 10vh;
+    min-height: 5vh;
     background-color: grey;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+
 }
