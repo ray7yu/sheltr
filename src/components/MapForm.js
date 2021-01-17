@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import './MapForm.css';
-import {GEO_CODE_KEY} from '../config'
+import { GEO_CODE_KEY } from '../config'
 import { FormControl, Form, Button, Dropdown } from 'react-bootstrap';
 
 
@@ -26,10 +26,14 @@ const MapForm = () => {
         console.log(lat, long, option);
     }
     const convertZip = (zip) => {
+        let res = {}
         fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + zip.toString() + "&key=" + GEO_CODE_KEY)
-            .then(data=>{return data.json()})
-            .then((data) => console.log(data.results[0].geometry.bounds.northeast.lat));
-            
+            .then(data => { return data.json() })
+            .then((data) => {
+                res.lat = data.results[0].geometry.bounds.northeast.lat
+                res.lng = data.results[0].geometry.bounds.northeast.lng
+            })
+        return res
     }
     const [long, setLong] = useState("");
     const [lat, setLat] = useState("");
@@ -40,7 +44,6 @@ const MapForm = () => {
             <Form onSubmit={submitForm}>
                 <Form.Group controlId="formBasicCheckbox">
                     <Form.Label className="text-checkbox">
-                        Select which item to display
                     </Form.Label>
                     <div className="checkbox-container">
                         {/* <Form.Check type="checkbox" className="form-checkbox" label="Homeless Shelters" />
