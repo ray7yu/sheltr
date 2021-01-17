@@ -6,7 +6,7 @@ import { GEO_CODE_KEY } from '../config'
 import { FormControl, Form, Button, ButtonGroup, Dropdown } from 'react-bootstrap';
 
 
-const MapForm = ({coords, setCoords, getPublicHousingInfo}) => {
+const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
     async function getLocation(){
         if (navigator.geolocation) {
             // navigator.geolocation.getCurrentPosition(getPosition, showError);
@@ -49,10 +49,9 @@ const MapForm = ({coords, setCoords, getPublicHousingInfo}) => {
 
     const [zip, setZip] = useState("");
     const [zipErr, setZipErr] = useState("");
-    const [option, setOption] = useState("Shelter");
     useEffect(() => {
         // console.log(coords, option);
-        getPublicHousingInfo("Developments", coords, 0.2);
+        getPublicHousingInfo(type, coords, 0.2);
     }, [coords]);
     return (
         <div className="userInput">
@@ -88,13 +87,27 @@ const MapForm = ({coords, setCoords, getPublicHousingInfo}) => {
                         </div> */}
                         {/* <Dropdown>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                {option}
+                                {type}
                             </Dropdown.Toggle>
-
                             <Dropdown.Menu>
+<<<<<<< HEAD
                                 <Dropdown.Item onClick={() => setOption("Shelter")}>Shelter</Dropdown.Item>
                                 <Dropdown.Item onClick={() => setOption("Food")}>Food</Dropdown.Item>
                                 <Dropdown.Item onClick={() => { }}>Something else</Dropdown.Item>
+=======
+                                <Dropdown.Item 
+                                    onClick={() => setType("Developments")}>
+                                    Developments
+                                </Dropdown.Item>
+                                <Dropdown.Item 
+                                    onClick={() => setType("Authorities")}>
+                                    Authorities
+                                </Dropdown.Item>
+                                <Dropdown.Item 
+                                    onClick={() => setType("Buildings")}>
+                                    Buildings
+                                </Dropdown.Item>
+>>>>>>> 44591d55bc9064244f7031e81c4d45aaea55b6db
                             </Dropdown.Menu>
                         </Dropdown> */}
                     </div>

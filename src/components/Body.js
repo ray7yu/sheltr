@@ -12,8 +12,9 @@ const defaultCenter = {
 }
 
 function Body() {
-  const [ showMap, setShowMap ] = useState(false);
+  const [showMap, setShowMap ] = useState(false);
   const [publicHousingInfo, setPublicHousingInfo] = useState([]);
+  const [type, setType] = useState('Developments');
   
   //type = 'Authorities', 'Buildings', or 'Developments'
   const getPublicHousingInfo = (type, coords, bounds) => (
@@ -39,7 +40,6 @@ function Body() {
   return (
     <div className="Body">
       <div className="Splash">
-      <button onClick={() => { getPublicHousingInfo('Developments', coords, 0.2) }}>test</button>
       <img src="/Landing.png" alt="" class="Wavy-color"></img>
       {/* <div className="Image">
             <img src="/sheltr-white.png" alt="logo" className="Logo"/>
@@ -57,8 +57,8 @@ function Body() {
       </Row>
       </div>
       <div className="Function">
-        <MapForm coords={coords} setCoords={setCoords} getPublicHousingInfo={getPublicHousingInfo}/>
-        <Map center={coords} locations={publicHousingInfo} zoomLevel={10} className="Map" />
+        <MapForm coords={coords} setCoords={setCoords} getPublicHousingInfo={getPublicHousingInfo} type={type} setType={setType}/>
+        <Map center={coords} locations={publicHousingInfo} zoomLevel={10} className="Map" type={type}/>
       </div>
     </div>
   );
