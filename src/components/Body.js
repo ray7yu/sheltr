@@ -1,14 +1,14 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import Map from './map/Map.js'
+import React, { useState } from 'react';
+import Map from './map/Map'
 import './Body.css';
 import { Row, Col } from 'react-bootstrap';
 import MapForm from './MapForm';
 import axios from 'axios'
 
 
-const center = {
-  lat: 40.7128,
-  lng: -74.0060,
+const defaultCenter = {
+  lat: 38.5382,
+  lng: -121.7617,
 }
 
 function Body() {
@@ -16,31 +16,30 @@ function Body() {
   const [publicHousingInfo, setPublicHousingInfo] = useState([]);
   
   //type = 'Authorities', 'Buildings', or 'Developments'
-  const getPublicHousingInfo = (type, latmin, latmax, longmin, longmax) => (
+  const getPublicHousingInfo = (type, coords, bounds) => (
     axios.get('https://services.arcgis.com/VTyQ9soqVukalItT/arcgis/rest/services/Public_Housing_'+
     type + 
     '/FeatureServer/0/query?where=LAT%20%3E%3D%20'+ 
-    latmin.toString() + 
+    (coords.lat - bounds).toString() + 
     '%20AND%20LAT%20%3C%3D%20'+ 
-    latmax.toString() +
+    (coords.lat + bounds).toString() +
     '%20AND%20LON%20%3E%3D%20'+
-    longmin.toString() +
+    (coords.lng - bounds).toString() +
     '%20AND%20LON%20%3C%3D%20'+
-    longmax.toString() +
-    '&outFields=STD_ADDR,STD_CITY,STD_ST,STD_ZIP5,OBJECTID&outSR=4326&f=json').then(res=>{
+    (coords.lng + bounds).toString() +
+    '&outFields=STD_ADDR,STD_CITY,STD_ST,STD_ZIP5,OBJECTID,SPENDING_PER_MONTH_PREV_YR,HA_PHN_NUM,PCT_OCCUPIED,REGULAR_VACANT&outSR=4326&f=json').then(res=>{
       setPublicHousingInfo(res.data.features)
       setShowMap(true)
     })
   )
   const coordHandler = coords => {
     setCoords(coords);
-    console.log("Hi");
   }
-  const [coords, setCoords] = useState("");
+  const [coords, setCoords] = useState(defaultCenter);
   return (
     <div className="Body">
       <div className="Splash">
-      <button onClick={() => { getPublicHousingInfo('Buildings', 42, 45, -75, -70) }}>test</button>
+      <button onClick={() => { getPublicHousingInfo('Developments', coords, 0.2) }}>test</button>
       <img src="/Landing.png" alt="" class="Wavy-color"></img>
       {/* <div className="Image">
             <img src="/sheltr-white.png" alt="logo" className="Logo"/>
@@ -53,13 +52,14 @@ function Body() {
             </div>
         </Col>
         <Col>
-          <MapForm coords={coords} setCoords={setCoords}/>
+          
         </Col>
       </Row>
       </div>
-      {
-        showMap ? <Map center={center} locations={publicHousingInfo} zoomLevel={13} /> : null
-      }
+      <div className="Function">
+        <MapForm coords={coords} setCoords={setCoords} getPublicHousingInfo={getPublicHousingInfo}/>
+        <Map center={coords} locations={publicHousingInfo} zoomLevel={10} className="Map" />
+      </div>
     </div>
   );
 }

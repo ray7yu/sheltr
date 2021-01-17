@@ -8,8 +8,8 @@
     display: none;
 }
 .userInput{
-    padding-top: 10px;
-    width: 70%;
+    padding: 10px 10px 0 10px;
+    width: 90%;
     margin: auto;
 }
 .form-container{
@@ -84,4 +84,10 @@
 }
 #zipCode-text{
     margin-bottom: 1em;
+}
+.Error {
+    color: red;
+}  
+.Invisible {
+    display: none
 }
