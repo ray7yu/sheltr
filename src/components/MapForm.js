@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './MapForm.css';
+import axios from 'axios';
 import { GEO_CODE_KEY } from '../config'
 import { FormControl, Form, Button, Dropdown } from 'react-bootstrap';
 
 
 const MapForm = () => {
-    const getLocation = () => {
+    async function getLocation(){
         if (navigator.geolocation) {
             // navigator.geolocation.getCurrentPosition(getPosition, showError);
             navigator.geolocation.getCurrentPosition(getPosition);
@@ -17,31 +18,36 @@ const MapForm = () => {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
         }
-        setLong(position.coords.longitude);
-        setLat(position.coords.latitude);
-        console.log(position.coords.latitude, position.coords.longitude);
-        console.log(lat, long, option);
+        setCoords({"lat": position.coords.latitude, "lng": position.coords.longitude});
     }
-    const submitForm = () => {
-        console.log(lat, long, option);
+    async function submitForm(event){
+        event.preventDefault();
+        const res = await convertZip(zip);
+        console.log(res);
+        setCoords({"lat": res.lat, "lng": res.lng});
     }
-    const convertZip = (zip) => {
-        let res = {}
-        fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + zip.toString() + "&key=" + GEO_CODE_KEY)
-            .then(data => { return data.json() })
-            .then((data) => {
-                res.lat = data.results[0].geometry.bounds.northeast.lat
-                res.lng = data.results[0].geometry.bounds.northeast.lng
+    async function convertZip(zip){
+        let coords = {}
+        await axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + zip.toString() + "&key=" + GEO_CODE_KEY)
+            .then(res => {
+                coords.lat = res.data.results[0].geometry.bounds.northeast.lat;
+                coords.lng = res.data.results[0].geometry.bounds.northeast.lng;
             })
-        return res
+            .catch(error => {
+                console.log(error);
+            });
+        return coords
     }
-    const [long, setLong] = useState("");
-    const [lat, setLat] = useState("");
-    // const [zip, setZip] = useState("");
+
+    const [coords, setCoords] = useState("");
+    const [zip, setZip] = useState("");
     const [option, setOption] = useState("Shelter");
+    useEffect(() => {
+        console.log(coords, option);
+    }, [coords]);
     return (
         <div className="userInput">
-            <Form onSubmit={submitForm}>
+            <Form onSubmit={(event) => submitForm(event)}>
                 <Form.Group controlId="formBasicCheckbox">
                     <Form.Label className="text-checkbox">
                     </Form.Label>
@@ -65,7 +71,7 @@ const MapForm = () => {
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail" className="form-group1">
                     {/* <Form.Label>Use My Location</Form.Label> */}
-                    <Button variant="info" type="submit" onClick={getLocation}>
+                    <Button variant="info" onClick={getLocation}>
                         Use My Location
                     </Button>
                     {/* <Form.Text id="text-result">
@@ -75,7 +81,7 @@ const MapForm = () => {
                     </Form.Text>
                     <div className="zipCode-group">
                         <Form.Label>Zip Code</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Zip Code" id="zipCode-text" onChange={(event) => convertZip(event.target.value)} />
+                        <Form.Control type="text" placeholder="Enter Zip Code" id="zipCode-text" onChange={(event) => setZip(event.target.value)} />
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
