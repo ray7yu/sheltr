@@ -63,38 +63,30 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
                     <div className="checkbox-container">
                         <div className="btn-container">
                             <Form.Label className="btn-name">Public Housing Authorities</Form.Label>
-                            <button className="form-checkbox">Left</button>
+                            <button 
+                                className={"form-checkbox " + (type === "Authorities" ? "selected-button" : "")}
+                                onClick={() => setType("Authorities")}
+                            >Left</button>
                         </div>
                         <div className="btn-container">
                             <Form.Label className="btn-name">Public Housing Developments</Form.Label>
-                            <button className="form-checkbox">Left</button>
+                            <button 
+                                className={"form-checkbox " + (type === "Developments" ? "selected-button" : "")}
+                                onClick={() => setType("Developments")}
+                            >Left</button>
                         </div>
                         <div className="btn-container">
                             <Form.Label className="btn-name">Public Housing Buildings</Form.Label>
-                            <button className="form-checkbox">Left</button>
+                            <button 
+                                className={"form-checkbox " + (type === "Buildings" ? "selected-button" : "")}
+                                onClick={() => setType("Buildings")}
+                            >Left</button>
                         </div>
-                        {/* <div className="btn-container">
-                            <Form.Label className="btn-name">Public Housing</Form.Label>
-                            <button className="form-checkbox"></button>
-                        </div> */}
-                        {/* <div className="btn-container">
-                            <Form.Label className="btn-name">Shelters</Form.Label>
-                            <button className="form-checkbox"></button>
-                        </div>
-                        <div className="btn-container">
-                            <Form.Label className="btn-name">Food Banks</Form.Label>
-                            <button className="form-checkbox"></button>
-                        </div> */}
                         {/* <Dropdown>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
                                 {type}
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-<<<<<<< HEAD
-                                <Dropdown.Item onClick={() => setOption("Shelter")}>Shelter</Dropdown.Item>
-                                <Dropdown.Item onClick={() => setOption("Food")}>Food</Dropdown.Item>
-                                <Dropdown.Item onClick={() => { }}>Something else</Dropdown.Item>
-=======
                                 <Dropdown.Item 
                                     onClick={() => setType("Developments")}>
                                     Developments
@@ -107,7 +99,6 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
                                     onClick={() => setType("Buildings")}>
                                     Buildings
                                 </Dropdown.Item>
->>>>>>> 44591d55bc9064244f7031e81c4d45aaea55b6db
                             </Dropdown.Menu>
                         </Dropdown> */}
                     </div>

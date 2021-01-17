@@ -67,7 +67,7 @@
     /* background-color:rgba(0, 0, 0, 0.1); */
     transform: scale(.95,.95);
 }
-.form-checkbox:focus{
+.selected-button{
     outline: none;
     border: none;
     background-color:rgb(100,100,100);
@@ -75,6 +75,10 @@
 .form-checkbox:hover{
     /* border: none; */
     background-color:rgb(100,100,100);
+}
+.form-checkbox:focus{
+    /* border: none; */
+    outline: none;
 }
 .text-muted{
     padding: 0px 20%;
