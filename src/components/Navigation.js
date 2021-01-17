@@ -7,7 +7,7 @@ function Navigation() {
       <Navbar.Brand href="#map"> 
       <img
         alt=""
-        src="white-sheltr2.png"
+        src="sheltr-white.png"
         width="auto"
         margin="0 5px 0 5px"
         height="50"
