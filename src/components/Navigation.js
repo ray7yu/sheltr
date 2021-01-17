@@ -3,7 +3,7 @@ import './Navigation.css';
 import { Form, FormControl, Nav, Navbar, Button, Container } from 'react-bootstrap';
 function Navigation() {
   return (
-    <Navbar expand="sm" className="custom-nav">
+    <Navbar expand="sm" className="custom-nav" fixed="top" >
       <Navbar.Brand> 
       <img
         alt=""
