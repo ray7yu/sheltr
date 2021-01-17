@@ -27,7 +27,7 @@ function Body() {
     (coords.lng - bounds).toString() +
     '%20AND%20LON%20%3C%3D%20'+
     (coords.lng + bounds).toString() +
-    '&outFields=STD_ADDR,STD_CITY,STD_ST,STD_ZIP5,OBJECTID,SPENDING_PER_MONTH_PREV_YR,HA_PHN_NUM,PCT_OCCUPIED,REGULAR_VACANT&outSR=4326&f=json').then(res=>{
+    '&outFields=STD_ADDR,STD_CITY,STD_ST,STD_ZIP5,OBJECTID,SPENDING_PER_MONTH_PREV_YR,HA_PHN_NUM,PCT_OCCUPIED,REGULAR_VACANT,TOTAL_OCCUPIED,APT_TYPE&outSR=4326&f=json').then(res=>{
       setPublicHousingInfo(res.data.features)
       setShowMap(true)
     })
@@ -39,6 +39,7 @@ function Body() {
   return (
     <div className="Body">
       <div className="Splash">
+      {/*<button onClick={() => { getPublicHousingInfo('Developments', coords, 0.2) }}>test</button>*/}
       <img src="/Landing.png" alt="" class="Wavy-color"></img>
       {/* <div className="Image">
             <img src="/sheltr-white.png" alt="logo" className="Logo"/>

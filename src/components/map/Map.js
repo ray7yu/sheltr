@@ -58,22 +58,25 @@ const Map = ( {center, locations, zoomLevel} ) => {
               <p>
                   <FontAwesomeIcon
                     icon={faHome}
-                  /> : 
+                  /> :  
                 {selected.attributes.STD_ADDR}
               </p>
               <p>
                   <FontAwesomeIcon
                     icon={faBuilding}
-                  /> : 
+                  /> :  
                 {selected.attributes.STD_CITY}, {selected.attributes.STD_ST}, {selected.attributes.STD_ZIP5}</p>
               <p>
                   <FontAwesomeIcon 
                     icon={faPhone} 
-                  /> : 
+                  /> :  
                 {selected.attributes.HA_PHN_NUM.toString().replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2 - $3')}
               </p>
               <p>
-                Units Vacant:  {selected.attributes.REGULAR_VACANT}
+                Units Vacant:  {selected.attributes.REGULAR_VACANT}/{selected.attributes.TOTAL_OCCUPIED}
+              </p>
+              <p>
+                Apartment Type:  {selected.attributes.APT_TYPE}
               </p>
             </div>
           </InfoWindow>
