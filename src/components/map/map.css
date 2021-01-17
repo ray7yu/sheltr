@@ -40,9 +40,9 @@
   .pin {
     display: flex;
     align-items: center;
-    transform: translate(-50%, -50%);
-    width: 180px;
+    transform: translate(-33%, -100%);
     color: var(--main-blue);
+    width: 15vw;
   }
 
   .pin-icon {
