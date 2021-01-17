@@ -48,11 +48,14 @@
     width: 100%;
 }
 #zipCode-text{
-    margin-bottom: 1em;
+    margin-bottom: 5px;
 }
-.Error {
+.error {
     color: red;
 }  
-.Invisible {
-    display: none
+.invisible {
+    display: hidden;
+}
+.errMsg {
+    margin-bottom: 5px;
 }

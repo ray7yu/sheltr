@@ -94,7 +94,7 @@ const MapForm = ({type, setType, coords, setCoords, getPublicHousingInfo}) => {
                             setZip(event.target.value);
                             setZipErr(false);
                         }}/>
-                        <div className={zipErr ? "error" : "invisible"}>Invalid Zipcode</div>
+                        <div className={"errMsg " + (zipErr ? "error" : "invisible")}>Invalid Zipcode</div>
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
