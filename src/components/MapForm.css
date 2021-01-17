@@ -2,11 +2,13 @@
     display: none;
 }
 .userInput{
+    
     padding: 10px 10px 0 10px;
     max-width: 400px;
     margin: 0px auto 0px auto;
     background-color: #EBEBEB;
     height: 700px;
+    font-style: arial !important;
 
 }
 .form-container{
@@ -104,4 +106,29 @@
 .location-button:focus{
     border: none !important;
     outline: none !important;
+}
+
+
+
+
+.step{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.stepnumber{
+    background-color: rgb(184, 183, 183);
+    width: 28px;
+    border-radius: 50%;
+    align-content: center;
+    text-align: center
+
+}
+
+.steptext{
+    margin-left: 10px;
+
+    width: 200px;
+
 }
