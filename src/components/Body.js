@@ -32,9 +32,11 @@ function Body() {
       setShowMap(true)
     })
   )
-
-
-
+  const coordHandler = coords => {
+    setCoords(coords);
+    console.log("Hi");
+  }
+  const [coords, setCoords] = useState("");
   return (
     <div className="Body">
       <div className="Splash">
@@ -51,13 +53,14 @@ function Body() {
             </div>
         </Col>
         <Col>
-          <MapForm />
+          <MapForm coords={coords} setCoords={setCoords}/>
         </Col>
       </Row>
       </div>
-      {
-        showMap ? <Map center={center} locations={publicHousingInfo} zoomLevel={13} /> : null
-      }
+
+      {/* <img src="/sheltr-white.png" alt="logo" className="Logo"/> */}
+      <button onClick={() => { getPublicHousingDevelopments(40, 45, -75, -70) }}>test</button>
+      <Map lat={coords.lat} lng={coords.lng} center={center} locations={publicHousingDevelopments} zoomLevel={13} />
     </div>
   );
 }
