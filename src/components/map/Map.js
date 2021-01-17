@@ -72,6 +72,9 @@ const Map = ( {center, locations, zoomLevel} ) => {
                   /> : 
                 {selected.attributes.HA_PHN_NUM.toString().replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2 - $3')}
               </p>
+              <p>
+                Units Vacant:  {selected.attributes.REGULAR_VACANT}
+              </p>
             </div>
           </InfoWindow>
           ) : console.log('infowindow fail')

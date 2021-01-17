@@ -27,7 +27,7 @@ function Body() {
     longmin.toString() +
     '%20AND%20LON%20%3C%3D%20'+
     longmax.toString() +
-    '&outFields=STD_ADDR,STD_CITY,STD_ST,STD_ZIP5,OBJECTID,SPENDING_PER_MONTH_PREV_YR,HA_PHN_NUM&outSR=4326&f=json').then(res=>{
+    '&outFields=STD_ADDR,STD_CITY,STD_ST,STD_ZIP5,OBJECTID,SPENDING_PER_MONTH_PREV_YR,HA_PHN_NUM,PCT_OCCUPIED,REGULAR_VACANT&outSR=4326&f=json').then(res=>{
       setPublicHousingInfo(res.data.features)
       setShowMap(true)
     })
