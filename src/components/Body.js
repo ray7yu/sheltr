@@ -15,29 +15,28 @@ function Body() {
   const [publicHousingInfo, setPublicHousingInfo] = useState([]);
   const [type, setType] = useState("Developments");
 
+  /*
+  https://gis.fema.gov/arcgis/rest/services/NSS/FEMA_NSS/FeatureServer/5/query?where=GEOX%20%3E%3D%20-90%20AND%20GEOX%20%3C%3D%2090%20AND%20GEOY%20%3E%3D%20-180%20AND%20GEOY%20%3C%3D%20180&outFields=*&outSR=4326&f=json
+   */
+
   //type = 'Authorities', 'Buildings', or 'Developments'
   const getPublicHousingInfo = (type, coords, bounds) =>
     axios
       .get(
-        "https://services.arcgis.com/VTyQ9soqVukalItT/arcgis/rest/services/Public_Housing_" +
-          type +
-          "/FeatureServer/0/query?where=LAT%20%3E%3D%20" +
+        "https://gis.fema.gov/arcgis/rest/services/NSS/FEMA_NSS/FeatureServer/5/query?where=GEOX%20%3E%3D%20" +
           (coords.lat - bounds).toString() +
-          "%20AND%20LAT%20%3C%3D%20" +
+          "%20AND%20GEOX%20%3C%3D%20" +
           (coords.lat + bounds).toString() +
-          "%20AND%20LON%20%3E%3D%20" +
+          "%20AND%20GEOY%20%3E%3D%20" +
           (coords.lng - bounds).toString() +
-          "%20AND%20LON%20%3C%3D%20" +
+          "%20AND%20GEOY%20%3C%3D%20" +
           (coords.lng + bounds).toString() +
-          "&outFields=STD_ADDR,STD_CITY,STD_ST,STD_ZIP5,OBJECTID,SPENDING_PER_MONTH_PREV_YR,HA_PHN_NUM,PCT_OCCUPIED,REGULAR_VACANT,TOTAL_OCCUPIED,APT_TYPE&outSR=4326&f=json"
+          "&outFields=*&outSR=4326&f=json"
       )
       .then((res) => {
         setPublicHousingInfo(res.data.features);
         setShowMap(true);
       });
-  const coordHandler = (coords) => {
-    setCoords(coords);
-  };
   const [coords, setCoords] = useState(defaultCenter);
   return (
     <div className="Body">
