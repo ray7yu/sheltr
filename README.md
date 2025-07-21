@@ -1,3 +1,7 @@
+# Overall Winner of HackDavis 2021
+
+See [Devpost](https://devpost.com/software/sheltr-2xjcvy)
+
 # Sheltr
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
